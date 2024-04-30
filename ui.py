@@ -49,6 +49,6 @@ if st.button("Recommend"):
        if 'image_url' in recommendation:  # Check if image_url exists
         st.image(recommendation['image_url'], width=250)  # Display image with width adjustment
     else:
-    st.write("No recommendations found based on your input.")
+      st.write("No recommendations found based on your input.")
 
 st.stop()
