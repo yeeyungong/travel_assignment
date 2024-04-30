@@ -51,25 +51,23 @@ if st.button("Recommend"):
     recommendations = get_recommendations(location, hashtags_str)
     if recommendations:
         st.subheader("Recommendations:")
-        recommendation_strings = []  # List to store concatenated recommendation strings
-        for recommendation in recommendations:
-            recommendation_string = f"{recommendation['location']}: {recommendation['hashtag']}"
-            recommendation_strings.append(recommendation_string)
-            # Display the image from GitHub repository using the provided URL
-            image_url = recommendation['image_url']
-            # Modify the URL to the correct format
-            full_image_url = f"{base_github_url}/{image_url}"
-            # Change the URL to view raw content
-            full_image_url = full_image_url.replace("/blob/", "/raw/")
-            try:
-                response = requests.get(full_image_url)
-                img = Image.open(BytesIO(response.content))
-                st.image(img.resize((250, 250)))  # Resize and display the image
-            except Exception as e:
-                st.write(f"Error loading image from URL: {full_image_url}")
-                st.write(e)
-        # Display concatenated recommendation strings
-        st.write(" ".join(recommendation_strings))
+        columns = st.columns(len(recommendations))  # Create columns for each recommendation
+        for i, recommendation in enumerate(recommendations):
+            with columns[i]:  # Select the current column
+                st.write(f"{recommendation['location']}: {recommendation['hashtag']}")
+                # Display the image from GitHub repository using the provided URL
+                image_url = recommendation['image_url']
+                # Modify the URL to the correct format
+                full_image_url = f"{base_github_url}/{image_url}"
+                # Change the URL to view raw content
+                full_image_url = full_image_url.replace("/blob/", "/raw/")
+                try:
+                    response = requests.get(full_image_url)
+                    img = Image.open(BytesIO(response.content))
+                    st.image(img.resize((250, 250)))  # Resize and display the image
+                except Exception as e:
+                    st.write(f"Error loading image from URL: {full_image_url}")
+                    st.write(e)
     else:
         st.write("No recommendations found based on your input.")
 st.stop()
