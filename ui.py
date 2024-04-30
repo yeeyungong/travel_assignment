@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import requests
+from PIL import Image
+from io import BytesIO
 
 # Assuming you have your get_recommendations function defined
 
@@ -51,7 +54,13 @@ if st.button("Recommend"):
             st.write(f"- {recommendation['location']}: {recommendation['hashtag']}")
             # Display the image from GitHub repository using the provided URL
             image_url = recommendation['image_url']
-            st.image(image_url, width=250)
+            try:
+                response = requests.get(image_url)
+                img = Image.open(BytesIO(response.content))
+                st.image(img, width=250)
+            except Exception as e:
+                st.write(f"Error loading image from URL: {image_url}")
+                st.write(e)
     else:
         st.write("No recommendations found based on your input.")
 st.stop()
