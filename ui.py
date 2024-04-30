@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import pickle
-import get_recommendations
+from Assignment import get_recommendations
 
 # Assuming you have your get_recommendations function defined
 
