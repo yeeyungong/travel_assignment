@@ -49,10 +49,9 @@ if st.button("Recommend"):
         st.subheader("Recommendations:")
         for recommendation in recommendations:
             st.write(f"- {recommendation['location']}: {recommendation['hashtag']}")
-            # Construct the full path to the image
-            image_path = os.path.join("images", recommendation['image_url'])
-            # Display the image
-            st.image(image_path, width=250)
+            # Display the image from GitHub repository using the provided URL
+            image_url = recommendation['image_url']
+            st.image(image_url, width=250)
     else:
         st.write("No recommendations found based on your input.")
 st.stop()
