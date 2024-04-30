@@ -57,7 +57,6 @@ if st.button("Recommend"):
         num_recommendations = len(recommendations)
         num_rows = (num_recommendations + 2) // 3  # Calculate number of rows needed
         for i in range(num_rows):
-            row_html = "<div style='display:flex;'>"
             for j in range(3):
                 index = i * 3 + j
                 if index < num_recommendations:
@@ -80,16 +79,12 @@ if st.button("Recommend"):
                             img = img.crop((padding, 0, width - padding, height))
                         # Resize the image to 250x250
                         img = img.resize((250, 250))
-                        # Convert the image to base64
-                        img_base64 = image_to_base64(img)
-                        # Create HTML for displaying image with title, location, and hashtag
-                         st.text(f"Title: {recommendation['image_title']}\nLocation: {recommendation['location']}\nHashtag: #{recommendation['hashtag']}")
+                        # Display recommendation information as text
+                        st.text(f"Title: {recommendation['image_title']}\nLocation: {recommendation['location']}\nHashtag: #{recommendation['hashtag']}")
+                        st.image(img, caption="", width=250, use_column_width=False)
                     except Exception as e:
                         st.write(f"Error loading image from URL: {full_image_url}")
                         st.write(e)
-            row_html += "</div>"
-            st.markdown(row_html, unsafe_allow_html=True)
     else:
         st.write("No recommendations found based on your input.")
-
 st.stop()
