@@ -51,7 +51,7 @@ if st.button("Recommend"):
             st.write(f"- {recommendation['location']}: {recommendation['hashtag']}")
             # Display the image from GitHub repository using the provided URL
             image_url = recommendation['image_url']
-            st.markdown(f'<img src="{image_url}" width="250">', unsafe_allow_html=True)
+            st.markdown(f'<img src="{images/image_url}" width="250">', unsafe_allow_html=True)
     else:
         st.write("No recommendations found based on your input.")
 st.stop()
