@@ -42,7 +42,7 @@ def get_recommendations(location, hashtags_str):
 
 if st.button("Recommend"):
 # Print recommendations if any
-if recommendations:
+  if recommendations:
   st.subheader("Recommendations:")
   for recommendation in recommendations:
     st.write(f"- {recommendation['location']}: {recommendation['hashtag']}")
