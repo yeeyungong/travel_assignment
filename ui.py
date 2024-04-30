@@ -17,7 +17,7 @@ hashtags_str = st.text_input("Enter Hashtags (e.g., cultural tours):")
 #    hashtags_str = "..."  # Extracted hashtags
 
 # Call the recommendation function
-def get_recommendations(location, hashtags_str):
+def get_recommendations(travel, location, hashtags_str):
 
   # Handle empty hashtags string
   if not hashtags_str:
@@ -42,7 +42,7 @@ def get_recommendations(location, hashtags_str):
 
 if st.button("Recommend"):
     # Print recommendations if any
-    recommendations = get_recommendations(location, hashtags_str)  # Corrected colon to equal sign
+    recommendations = get_recommendations(travel, location, hashtags_str)  # Corrected colon to equal sign
     if recommendations:
         st.subheader("Recommendations:")
         for recommendation in recommendations:
