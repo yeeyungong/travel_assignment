@@ -19,6 +19,8 @@ hashtags_str = st.text_input("Enter Hashtags (e.g., cultural tours):")
 # Call the recommendation function
 def get_recommendations(location, hashtags_str):
 
+  travel = pd.read_csv("image_dataset.csv") 
+
   # Handle empty hashtags string
   if not hashtags_str:
       return []
