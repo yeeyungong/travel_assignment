@@ -22,9 +22,6 @@ def get_recommendations(location, hashtags_str):
   # Handle empty hashtags string
   if not hashtags_str:
       return []
-
-
-  if st.button('Recommend'):
   # Split the provided hashtags string into a list
   hashtags = hashtags_str.strip().split()
 
@@ -43,6 +40,8 @@ def get_recommendations(location, hashtags_str):
       return recommendations
   return [] 
 
+
+if st.button('Recommend'):
 # # Print recommendations if any
 # if recommendations:
 #   st.subheader("Recommendations:")
