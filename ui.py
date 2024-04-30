@@ -40,6 +40,7 @@ def get_recommendations(location, hashtags_str):
       return recommendations
   return [] 
 
+if st.button("Recommend"):
 # Print recommendations if any
 if recommendations:
   st.subheader("Recommendations:")
