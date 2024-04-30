@@ -18,7 +18,7 @@ hashtags_str = st.text_input("Enter Hashtags (e.g., cultural tours):")
 
 # Call the recommendation function
 def get_recommendations(location, hashtags_str):
-    travel = pd.read_csv("image_dataset.csv") 
+    travel = pd.read_csv("image_dataset.csv")
 
     # Handle empty hashtags string
     if not hashtags_str:
@@ -40,7 +40,7 @@ def get_recommendations(location, hashtags_str):
             # Get top 10 recommendations
             recommendations = sorted_df[['location', 'hashtag', 'image_url']].head(10).to_dict('records')
             return recommendations
-    return [] 
+    return []
 
 if st.button("Recommend"):
     # Print recommendations if any
