@@ -62,7 +62,8 @@ if st.button("Recommend"):
             try:
                 response = requests.get(full_image_url)
                 img = Image.open(BytesIO(response.content))
-                st.image(img, width=250, height=250)  # Set width and height
+                img_resized = img.resize((250, 250))  # Resize the image to 250x250
+                st.image(img_resized)  # Display the resized image
             except Exception as e:
                 st.write(f"Error loading image from URL: {full_image_url}")
                 st.write(e)
