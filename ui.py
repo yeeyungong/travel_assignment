@@ -50,7 +50,7 @@ if st.button("Recommend"):
         for recommendation in recommendations:
             st.write(f"- {recommendation['location']}: {recommendation['hashtag']}")
             # Construct the full path to the image
-            image_path = os.path.join("images", recommendation['image_url'])
+            image_path = os.path.join("images/", recommendation['image_url'])
             # Display the image
             st.image(image_path, width=250)
     else:
