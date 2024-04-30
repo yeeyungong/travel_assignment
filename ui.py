@@ -51,7 +51,15 @@ if st.button("Recommend"):
     recommendations = get_recommendations(location, hashtags_str)
     if recommendations:
         st.subheader("Recommendations:")
-        for recommendation in recommendations:
+        row_start = True
+        for i, recommendation in enumerate(recommendations):
+            if i % 5 == 0:
+                if not row_start:
+                    st.write("</div>")  # Close previous row
+                st.write('<div class="row">')  # Start new row
+                row_start = False
+
+            st.write('<div class="col-md-2">')  # Each recommendation takes 2/12 of the row width
             st.write(f"- {recommendation['location']}: {recommendation['hashtag']}")
             # Display the image from GitHub repository using the provided URL
             image_url = recommendation['image_url']
@@ -66,6 +74,9 @@ if st.button("Recommend"):
             except Exception as e:
                 st.write(f"Error loading image from URL: {full_image_url}")
                 st.write(e)
+            st.write("</div>")  # Close column
+
+        st.write("</div>")  # Close final row
     else:
         st.write("No recommendations found based on your input.")
 st.stop()
