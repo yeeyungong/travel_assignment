@@ -23,6 +23,8 @@ def get_recommendations(location, hashtags_str):
   if not hashtags_str:
       return []
 
+
+  if st.button('Recommend'):
   # Split the provided hashtags string into a list
   hashtags = hashtags_str.strip().split()
 
