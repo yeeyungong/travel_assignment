@@ -41,15 +41,15 @@ def get_recommendations(location, hashtags_str):
   return [] 
 
 if st.button("Recommend"):
-# Print recommendations if any
-  recommendations = get_recommendations(location, hashtags_str):
+    # Print recommendations if any
+    recommendations = get_recommendations(location, hashtags_str)  # Corrected colon to equal sign
     if recommendations:
-      st.subheader("Recommendations:")
-      for recommendation in recommendations:
-       st.write(f"- {recommendation['location']}: {recommendation['hashtag']}")
-       if 'image_url' in recommendation:  # Check if image_url exists
-        st.image(recommendation['image_url'], width=250)  # Display image with width adjustment
+        st.subheader("Recommendations:")
+        for recommendation in recommendations:
+            st.write(f"- {recommendation['location']}: {recommendation['hashtag']}")
+            if 'image_url' in recommendation:  # Check if image_url exists
+                st.image(recommendation['image_url'], width=250)  # Display image with width adjustment
     else:
-      st.write("No recommendations found based on your input.")
+        st.write("No recommendations found based on your input.")
 
 st.stop()
