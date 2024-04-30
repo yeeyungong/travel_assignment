@@ -40,16 +40,14 @@ def get_recommendations(location, hashtags_str):
       return recommendations
   return [] 
 
+# Print recommendations if any
+if recommendations:
+  st.subheader("Recommendations:")
+  for recommendation in recommendations:
+    st.write(f"- {recommendation['location']}: {recommendation['hashtag']}")
+    if 'image_url' in recommendation:  # Check if image_url exists
+      st.image(recommendation['image_url'], width=250)  # Display image with width adjustment
+  else:
+    st.write("No recommendations found based on your input.")
 
-if st.button('Recommend'):
-# # Print recommendations if any
-# if recommendations:
-#   st.subheader("Recommendations:")
-#   for recommendation in recommendations:
-#     st.write(f"- {recommendation['location']}: {recommendation['hashtag']}")
-#     if 'image_url' in recommendation:  # Check if image_url exists
-#       st.image(recommendation['image_url'], width=250)  # Display image with width adjustment
-#   else:
-#     st.write("No recommendations found based on your input.")
-
-# st.stop()
+st.stop()
